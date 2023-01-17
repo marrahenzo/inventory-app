@@ -9,7 +9,7 @@ const GameSchema = new Schema({
   ],
   publisher: { type: Schema.Types.ObjectId, ref: 'Publisher', required: true },
   genre: [{ type: Schema.Types.ObjectId, ref: 'Genre', required: true }],
-  summary: { type: String, required: true, maxLength: 1000 },
+  summary: { type: String, required: true, maxLength: 10000 },
   rating: { type: Schema.Types.ObjectId, ref: 'AgeRating', required: true }
 });
 
