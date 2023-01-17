@@ -1,6 +1,3 @@
 node_modules 
 populatedb.js
 mongo.txt
-/diagrams/*
-!/diagrams/TOP\ Diagram.drawio
-!/diagrams/TOP\ Diagram.png
