@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let compression = require('compression');
 let helmet = require('helmet');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 let gamesRouter = require('./routes/games');
@@ -18,8 +19,7 @@ let developersRouter = require('./routes/developers');
 var app = express();
 
 const mongoose = require('mongoose');
-// Either use environment variable or console argument
-const mongoDB = process.env.MONGODB_URI || process.argv.slice(2);
+const mongoDB = process.env.MONGODB_URI;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
