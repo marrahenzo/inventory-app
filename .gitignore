@@ -1,3 +1,4 @@
 node_modules 
 populatedb.js
 mongo.txt
+.env
