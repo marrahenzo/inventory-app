@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "devStart": "SET DEBUG=inventory-app:* & npm start"
+    "devStart": "SET DEBUG=inventory-app:* & nodemon ./bin/www"
   },
   "dependencies": {
     "async": "^3.2.4",
