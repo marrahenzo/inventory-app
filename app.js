@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+let compression = require('compression');
+let helmet = require('helmet');
 
 var indexRouter = require('./routes/index');
 let gamesRouter = require('./routes/games');
@@ -15,10 +17,20 @@ let developersRouter = require('./routes/developers');
 
 var app = express();
 
+const mongoose = require('mongoose');
+// Either use environment variable or console argument
+const mongoDB = process.env.MONGODB_URI || process.argv.slice(2);
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connecion error: '));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(helmet());
+app.use(compression());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
