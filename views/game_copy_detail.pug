@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+  h1= data.game.title
+  ul Platforms:
+    for platform in data.game.platform
+      li= platform.name
+  p= data.price 
+  p= data.format 
+  p= data.condition
+  p= data.game.summary 
+  p= data.game.rating.name
+  for developer in data.game.developer 
+    p= developer.name
+  p= data.game.publisher.name

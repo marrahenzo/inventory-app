@@ -2,4 +2,22 @@ extends layout
 
 block content
   h1 Games
-  p woo games
+  for game in data
+    .game
+      p= game.title
+      p Platforms:
+      ul
+      for item in game.platform
+        li= item.name
+      ul
+      p Developer/s:
+      for item in game.developer
+        li= item.name
+      p Publisher:
+      p= game.publisher.name
+      p Genre/s:
+      for item in game.genre
+        li= item.name
+      p= game.summary
+      p= game.rating.name
+      a(href=`/games/${game._id}`) more

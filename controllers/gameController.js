@@ -8,13 +8,37 @@ const AgeRating = require('../models/ageRating');
 
 const { body, validationResult } = require('express-validator');
 const async = require('async');
+const mongoose = require('mongoose');
 
-exports.game_list = (req, res) => {
-  res.send('Games list');
+exports.game_list = (req, res, next) => {
+  Game.find({})
+    .populate('platform')
+    .populate('developer')
+    .populate('publisher')
+    .populate('genre')
+    .populate('summary')
+    .populate('rating')
+    .exec((err, results) => {
+      res.render('games', { data: results });
+    });
 };
 
 exports.game_detail = (req, res) => {
-  res.send('Games detail');
+  const id = mongoose.Types.ObjectId(req.params.id);
+  Game.findById(id)
+    .populate('platform')
+    .populate('developer')
+    .populate('publisher')
+    .populate('genre')
+    .populate('summary')
+    .populate('rating')
+    .exec((err, results) => {
+      if (err) {
+        res.render('index', { message: 'An error has ocurred', error: 'A' });
+        return;
+      }
+      res.render('game_detail', { game: results });
+    });
 };
 
 exports.game_create_get = (req, res) => {

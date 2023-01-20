@@ -3,14 +3,14 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}, gaming database and mini-store
-  p Game count: #{data.game_count}
-  p Game Copy count: #{data.game_copy_count}
-  p Genre count: #{data.genre_count}
-  p Platform count: #{data.platform_count}
-  p Developer count: #{data.developer_count}
-  p Publisher count: #{data.publisher_count}
-  p Age Rating count: #{data.age_rating_count}
-  p Random Game : #{data.random_game.title}
+  p Game count: #{data.game_count} #[a(href="/games") all games]
+  p Game Copy count: #{data.game_copy_count} #[a(href="/copies") all game copies]
+  p Genre count: #{data.genre_count} #[a(href="/genres") all genres]
+  p Platform count: #{data.platform_count} #[a(href="/platforms") all platforms]
+  p Developer count: #{data.developer_count} #[a(href="/developers") all developers]
+  p Publisher count: #{data.publisher_count} #[a(href="/publishers") all publishers]
+  p Age Rating count: #{data.age_rating_count} #[a(href="/ageratings") all age ratings]
+  p Random Game : #{data.random_game.title} 
   p Random Game Copy : #{data.random_game_copy.game.title}
   p Random Genre : #{data.random_genre.name}
   p Random Platform : #{data.random_platform.name}

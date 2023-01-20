@@ -5,11 +5,24 @@ const { body, validationResult } = require('express-validator');
 const async = require('async');
 
 exports.game_copy_list = (req, res) => {
-  res.send('Game copies list');
+  GameCopy.find({})
+    .populate('game')
+    .exec((err, results) => {
+      res.render('game_copies', { data: results });
+    });
 };
 
 exports.game_copy_detail = (req, res) => {
-  res.send('Game copy detail');
+  GameCopy.findById(req.params.id)
+    .populate({
+      path: 'game',
+      populate: {
+        path: 'platform developer publisher genre rating'
+      }
+    })
+    .exec((err, results) => {
+      res.render('game_copy_detail', { data: results });
+    });
 };
 
 exports.game_copy_create_get = (req, res) => {

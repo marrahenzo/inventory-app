@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Game Copies
+  for gameCopy in data
+    .game 
+      p= gameCopy.game.title
+      for platform in gameCopy.game.platform
+        p= platform.name
+      p= gameCopy.price 
+      p= gameCopy.format
+      p= gameCopy.condition
+      a(href=`/copies/${gameCopy._id}`) more
