@@ -4,11 +4,15 @@ const { body, validationResult } = require('express-validator');
 const async = require('async');
 
 exports.platform_list = (req, res) => {
-  res.send('Platforms list');
+  Platform.find({}).exec((err, results) => {
+    res.render('platforms', { data: results });
+  });
 };
 
 exports.platform_detail = (req, res) => {
-  res.send('Platform detail');
+  Platform.findById(req.params.id).exec((err, results) => {
+    res.render('platform_detail', { platform: results });
+  });
 };
 
 exports.platform_create_get = (req, res) => {

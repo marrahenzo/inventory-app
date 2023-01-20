@@ -4,11 +4,15 @@ const { body, validationResult } = require('express-validator');
 const async = require('async');
 
 exports.age_rating_list = (req, res) => {
-  res.send('Age Ratings list');
+  AgeRating.find({}).exec((err, results) => {
+    res.render('ageratings', { data: results });
+  });
 };
 
 exports.age_rating_detail = (req, res) => {
-  res.send('Age Rating detail');
+  AgeRating.findById(req.params.id).exec((err, results) => {
+    res.render('agerating_detail', { agerating: results });
+  });
 };
 
 exports.age_rating_create_get = (req, res) => {

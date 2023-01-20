@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+  h1 Publishers 
+  for publisher in data 
+    .publisher 
+      p=publisher.name 
+      p=publisher.description
+      a(href=`/publishers/${publisher.id}`) more

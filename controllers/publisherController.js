@@ -4,11 +4,15 @@ const { body, validationResult } = require('express-validator');
 const async = require('async');
 
 exports.publisher_list = (req, res) => {
-  res.send('Publishers list');
+  Publisher.find({}).exec((err, results) => {
+    res.render('publishers', { data: results });
+  });
 };
 
 exports.publisher_detail = (req, res) => {
-  res.send('Publisher detail');
+  Publisher.findById(req.params.id).exec((err, results) => {
+    res.render('publisher_detail', { publisher: results });
+  });
 };
 
 exports.publisher_create_get = (req, res) => {

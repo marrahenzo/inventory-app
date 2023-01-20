@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+  h1 Age Ratings 
+  for agerating in data 
+    .agerating 
+      p=agerating.name 
+      p=agerating.description
+      a(href=`/ageratings/${agerating.id}`) more

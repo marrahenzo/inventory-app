@@ -4,11 +4,15 @@ const { body, validationResult } = require('express-validator');
 const async = require('async');
 
 exports.developer_list = (req, res) => {
-  res.send('Developers list');
+  Developer.find({}).exec((err, results) => {
+    res.render('developers', { data: results });
+  });
 };
 
 exports.developer_detail = (req, res) => {
-  res.send('Developer detail');
+  Developer.findById(req.params.id).exec((err, results) => {
+    res.render('developer_detail', { developer: results });
+  });
 };
 
 exports.developer_create_get = (req, res) => {

@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+  h1 Platforms 
+  for platform in data 
+    .genre 
+      p=platform.name 
+      p=platform.description
+      a(href=`/platforms/${platform.id}`) more

@@ -4,11 +4,15 @@ const { body, validationResult } = require('express-validator');
 const async = require('async');
 
 exports.genre_list = (req, res) => {
-  res.send('Genres list');
+  Genre.find({}).exec((err, results) => {
+    res.render('genres', { data: results });
+  });
 };
 
 exports.genre_detail = (req, res) => {
-  res.send('Genre detail');
+  Genre.findById(req.params.id).exec((err, results) => {
+    res.render('genre_detail', { genre: results });
+  });
 };
 
 exports.genre_create_get = (req, res) => {

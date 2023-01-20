@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+  h1 Developers 
+  for developer in data 
+    .developer 
+      p=developer.name 
+      p=developer.description
+      a(href=`/developers/${developer.id}`) more

@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+  h1 Genres 
+  for genre in data 
+    .genre 
+      p=genre.name 
+      p=genre.description
+      a(href=`/genres/${genre.id}`) more
