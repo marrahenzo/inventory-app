@@ -3,3 +3,6 @@ extends layout
 block content 
   h1=agerating.name 
   p=agerating.description
+
+  a.btn.btn-primary(href=`${agerating.url}/update`) Edit
+  a.btn.btn-danger(href=`${agerating.url}/delete`) Delete

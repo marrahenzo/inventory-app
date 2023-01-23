@@ -3,3 +3,6 @@ extends layout
 block content 
   h1=publisher.name 
   p=publisher.description
+
+  a.btn.btn-primary(href=`${publisher.url}/update`) Edit
+  a.btn.btn-danger(href=`${publisher.url}/delete`) Delete

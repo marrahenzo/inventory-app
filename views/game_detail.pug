@@ -17,3 +17,6 @@ block content
     li= item.name
   p= game.summary
   p= game.rating.name
+
+  a.btn.btn-primary(href=`${game.url}/update`) Edit
+  a.btn.btn-danger(href=`${game.url}/delete`) Delete

@@ -1,5 +1,8 @@
-extends layout 
+extends layout
 
 block content 
   h1=developer.name 
   p=developer.description
+
+  a.btn.btn-primary(href=`${developer.url}/update`) Edit
+  a.btn.btn-danger(href=`${developer.url}/delete`) Delete

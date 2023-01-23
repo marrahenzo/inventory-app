@@ -13,3 +13,6 @@ block content
   for developer in data.game.developer 
     p= developer.name
   p= data.game.publisher.name
+
+  a.btn.btn-primary(href=`${data.url}/update`) Edit
+  a.btn.btn-danger(href=`${data.url}/delete`) Delete

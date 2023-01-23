@@ -3,3 +3,6 @@ extends layout
 block content
   h1= platform.name 
   p= platform.description
+
+  a.btn.btn-primary(href=`${platform.url}/update`) Edit
+  a.btn.btn-danger(href=`${platform.url}/delete`) Delete
