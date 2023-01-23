@@ -38,13 +38,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/games', gamesRouter);
-app.use('/copies', gameCopiesRouter);
-app.use('/genres', genresRouter);
-app.use('/platforms', platformsRouter);
-app.use('/publishers', publishersRouter);
-app.use('/ageratings', ageRatingsRouter);
-app.use('/developers', developersRouter);
+app.use('/game', gamesRouter);
+app.use('/gamecopy', gameCopiesRouter);
+app.use('/genre', genresRouter);
+app.use('/platform', platformsRouter);
+app.use('/publisher', publishersRouter);
+app.use('/rating', ageRatingsRouter);
+app.use('/developer', developersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
