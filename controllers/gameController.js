@@ -42,25 +42,179 @@ exports.game_detail = (req, res) => {
 };
 
 exports.game_create_get = (req, res) => {
-  res.send('Game create get');
+  async.parallel(
+    {
+      platforms(callback) {
+        Platform.find({}).exec(callback);
+      },
+      developers(callback) {
+        Developer.find({}).exec(callback);
+      },
+      publishers(callback) {
+        Publisher.find({}).exec(callback);
+      },
+      genres(callback) {
+        Genre.find({}).exec(callback);
+      },
+      ratings(callback) {
+        AgeRating.find({}).exec(callback);
+      }
+    },
+    (err, results) => {
+      if (err) res.redirect('/game');
+      res.render('game_form', { title: 'Create Game', data: results });
+    }
+  );
 };
 
-exports.game_create_post = (req, res) => {
-  res.send('Game create post');
-};
+exports.game_create_post = [
+  body('title').trim().isLength({ min: 1 }).escape(),
+  body('summary').trim().isLength({ min: 1 }).escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    Genre.find({ _id: { $in: req.body.genre } }).exec((err, results) => {
+      if (err) res.redirect('/game/create');
+      console.log(results);
+
+      const game = new Game({
+        title: req.body.title,
+        platform: req.body.platform,
+        developer: req.body.developer,
+        publisher: req.body.publisher,
+        genre: results.map((a) => a.id),
+        summary: req.body.summary,
+        rating: req.body.rating
+      });
+
+      if (!errors.isEmpty()) {
+        res.redirect('/game/create');
+        return;
+      } else {
+        game.save((err) => {
+          if (err) return next(err);
+
+          res.redirect(game.url);
+        });
+      }
+    });
+  }
+];
 
 exports.game_delete_get = (req, res) => {
-  res.send('Game delete get');
+  async.parallel(
+    {
+      copies(callback) {
+        GameCopy.find({ game: req.params.id }).exec(callback);
+      },
+      game(callback) {
+        Game.findById(req.params.id).exec(callback);
+      }
+    },
+    (err, results) => {
+      if (err) {
+        res.redirect('back');
+        return;
+      }
+
+      res.render('game_delete', { title: 'Delete game', data: results });
+    }
+  );
 };
 
-exports.game_delete_post = (req, res) => {
-  res.send('Game delete post');
+exports.game_delete_post = (req, res, next) => {
+  async.parallel(
+    {
+      copies(callback) {
+        GameCopy.find({ game: req.params.id }).exec(callback);
+      },
+      game(callback) {
+        Game.findById(req.params.id).exec(callback);
+      }
+    },
+    (err, results) => {
+      if (err) return next(err);
+
+      if (results.copies.length > 0) {
+        res.render('game_delete', { title: 'Delete Game', data: results });
+        return;
+      }
+
+      Game.findByIdAndDelete(req.body.gameid, (err) => {
+        if (err) return next(err);
+
+        res.redirect('/game');
+      });
+    }
+  );
 };
 
 exports.game_update_get = (req, res) => {
-  res.send('Game update get');
+  async.parallel(
+    {
+      platforms(callback) {
+        Platform.find({}).exec(callback);
+      },
+      developers(callback) {
+        Developer.find({}).exec(callback);
+      },
+      publishers(callback) {
+        Publisher.find({}).exec(callback);
+      },
+      genres(callback) {
+        Genre.find({}).exec(callback);
+      },
+      ratings(callback) {
+        AgeRating.find({}).exec(callback);
+      },
+      game(callback) {
+        Game.findById(req.params.id)
+          .populate('platform')
+          .populate('developer')
+          .populate('publisher')
+          .populate('genre')
+          .populate('rating')
+          .exec(callback);
+      }
+    },
+    (err, results) => {
+      if (err) res.redirect('/game');
+      res.render('game_form', { title: 'Edit Game', data: results });
+    }
+  );
 };
 
-exports.game_update_post = (req, res) => {
-  res.send('Game update post');
-};
+exports.game_update_post = [
+  body('title').trim().isLength({ min: 1 }).escape(),
+  body('summary').trim().isLength({ min: 1 }).escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    const game = new Game({
+      _id: req.params.id,
+      title: req.body.title,
+      platform: req.body.platform,
+      developer: req.body.developer,
+      publisher: req.body.publisher,
+      genre: req.body.genre,
+      summary: req.body.summary,
+      rating: req.body.rating
+    });
+
+    if (!errors.isEmpty()) {
+      res.redirect('back');
+      return;
+    } else {
+      Game.findByIdAndUpdate(
+        req.params.id,
+        game,
+        {},
+        function (err, gameResult) {
+          if (err) return next(err);
+
+          res.redirect(game.url);
+        }
+      );
+    }
+  }
+];
