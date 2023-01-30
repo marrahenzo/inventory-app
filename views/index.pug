@@ -1,32 +1,20 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}, gaming database and mini-store
-  p Game count: #{data.game_count} #[a(href="/game") all games]
-  p Game Copy count: #{data.game_copy_count} #[a(href="/gamecopy") all game copies]
-  p Genre count: #{data.genre_count} #[a(href="/genre") all genres]
-  p Platform count: #{data.platform_count} #[a(href="/platform") all platforms]
-  p Developer count: #{data.developer_count} #[a(href="/developer") all developers]
-  p Publisher count: #{data.publisher_count} #[a(href="/publisher") all publishers]
-  p Age Rating count: #{data.age_rating_count} #[a(href="/rating") all age ratings]
-  p Random Game : #{data.random_game.title} 
-  p Random Game Copy : #{data.random_game_copy.game.title}
-  p Random Genre : #{data.random_genre.name}
-  p Random Platform : #{data.random_platform.name}
-  p Random Developer : #{data.random_developer.name}
-  p Random Publisher : #{data.random_publisher.name}
-  p Random Age Rating : #{data.random_age_rating.name}
-  a(href="/game/create") Create Game
-  br
-  a(href="/gamecopy/create") Create Game Copy
-  br
-  a(href="/genre/create") Create Genre
-  br
-  a(href="/platform/create") Create Platform
-  br
-  a(href="/developer/create") Create Developer
-  br
-  a(href="/publisher/create") Create Publisher
-  br
-  a(href="/rating/create") Create Age Rating
+  #main-container
+    p#index-title Welcome to #{title}, gaming database and mini-store
+    .counter-container
+      .index-counter#game
+        p Game count: #{data.game_count} #[a(href="/game") all games]
+      .index-counter#copy
+        p Game Copy count: #{data.game_copy_count} #[a(href="/gamecopy") all game copies]
+      .index-counter#genre
+        p Genre count: #{data.genre_count} #[a(href="/genre") all genres]
+      .index-counter#platform
+        p Platform count: #{data.platform_count} #[a(href="/platform") all platforms]
+      .index-counter#developer
+        p Developer count: #{data.developer_count} #[a(href="/developer") all developers]
+      .index-counter#publisher
+        p Publisher count: #{data.publisher_count} #[a(href="/publisher") all publishers]
+      .index-counter#rating
+        p Age Rating count: #{data.age_rating_count} #[a(href="/rating") all age ratings]
