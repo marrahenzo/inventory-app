@@ -15,7 +15,6 @@ router.get('/', function (req, res) {
   async.parallel(
     {
       random_game(callback) {
-        console.log('here');
         Game.countDocuments({}, (err, count) => {
           let randomNumber = getRandom(count);
           Game.findOne(callback).skip(randomNumber);
