@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+  h1 #{title}: #{data.game.title}
+
+  if data.copies.length
+    p #[strong Delete the following copies before attempting to delete this game]
+    div
+      h4 Copies
+      dl 
+      for copy in data.copies 
+        dt 
+          a(href=copy.url) #{data.game.title}
+        dd #{copy.price}
+        dd #{copy.format}
+        dd #{copy.condition}
+  else
+    p Do you really want to delete this Game?
+    form(action="" method='POST')
+      .form-group
+        input#gameid.form-control(type='hidden' name='gameid' required='true' value=data.game.id)
+      button.btn.btn-primary(type='submit') Delete

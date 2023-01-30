@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+  h1 #{title}: #{publisher.name}
+
+  if games.length
+    p #[strong Delete the following games before attempting to delete this publisher]
+    div
+      h4 Games 
+      dl 
+      for game in games 
+        dt 
+          a(href=game.url) #{game.title}
+        dd #{game.summary}
+  else
+    p Do you really want to delete this Publisher?
+    form(action="" method='POST')
+      .form-group
+        input#publisherid.form-control(type='hidden' name='publisherid' required='true' value=publisher.id)
+      button.btn.btn-primary(type='submit') Delete

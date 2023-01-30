@@ -1,0 +1,52 @@
+extends layout
+
+block content 
+  h1=title 
+  
+  form(action="" method="post")
+    .form-group 
+      label(for='title') Title: 
+      input#title.form-control(type='text' placeholder='Elden Ring' name='title' required='true' value=(data.game===undefined?'':data.game.title))
+      
+      fieldset
+        legend Platform/s
+          br
+          for platform in data.platforms
+            label(for=platform.name) #{platform.name} 
+            input(id=platform.name type="checkbox" name="platform" value=platform.id checked=(data.game === undefined ? false : data.game.platform.some((element) => element.id === platform.id)))
+            br
+      
+      fieldset
+        legend Developer/s
+          br
+          for developer in data.developers
+            label(for=developer.name) #{developer.name} 
+            input(id=developer.name type="checkbox" name="developer" value=developer.id checked=(data.game === undefined ? false : data.game.developer.some((element) => element.id === developer.id)))
+            br
+
+      label(for='publisher') Publisher: 
+      select(name="publisher" required='true')
+        for publisher in data.publishers
+          option(value=publisher.id selected=((data.game === undefined) ? false : data.game.publisher.id === publisher.id)) #{publisher.name}
+
+      fieldset
+        legend Genre/s
+          br
+          for genre in data.genres
+            label(for=genre.name) #{genre.name} 
+            input(id=genre.name type="checkbox" name="genre" value=genre.id checked=(data.game === undefined ? false : data.game.genre.some((element) => element.id === genre.id)))
+            br
+
+      label(for="summary") Summary: 
+      if data.game
+        textarea#summary(name="summary", cols="30", rows="10" required='true')=data.game.summary
+      else
+        textarea#summary(name="summary", cols="30", rows="10" required='true')
+      br
+
+      label(for='rating') Rating: 
+      select(name="rating" required='true')
+        for rating in data.ratings
+          option(value=rating.id selected=((data.game === undefined) ? false : data.game.rating.id === rating.id)) #{rating.name}
+      
+      button.btn.btn-primary(type="submit") Submit

@@ -1,0 +1,12 @@
+extends layout
+
+block content 
+  p Do you really want to delete this Game copy?
+  p= copy.game.title 
+  p= copy.price 
+  p= copy.format 
+  p= copy.condition
+    form(action="" method='POST')
+      .form-group
+        input#copyid.form-control(type='hidden' name='copyid' required='true' value=copy.id)
+      button.btn.btn-primary(type='submit') Delete
