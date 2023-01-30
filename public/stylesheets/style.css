@@ -1,8 +1,38 @@
+html,
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
-a {
-  color: #00B7FF;
+* {
+  margin: 0;
+  padding: 0;
 }
+
+a:link {
+  text-decoration: none;
+}
+
+#nav {
+  background-color: beige;
+}
+#nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#nav li {
+  list-style: none;
+  font-family: "Open Sans";
+  font-size: 20px;
+}
+#nav #title {
+  text-align: center;
+  font-family: "Nunito";
+  font-weight: bold;
+  margin: 0;
+  font-size: 50px;
+}
+
+/*# sourceMappingURL=style.css.map */
