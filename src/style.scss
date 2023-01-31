@@ -1,6 +1,7 @@
 // Main layout, navbar and footer
 
 $color-main: rgb(1, 7, 94);
+$color-contrast: white;
 
 * {
   margin: 0;
@@ -39,7 +40,7 @@ a:link {
     transition: all 0.1s ease;
 
     a {
-      color: white;
+      color: $color-contrast;
     }
 
     &:hover:not(:first-child) {
@@ -68,7 +69,7 @@ footer {
 
   #credits-name {
     font-family: 'Roboto';
-    color: white;
+    color: $color-contrast;
   }
 
   #credits-link {
@@ -145,5 +146,91 @@ footer {
   &#rating {
     grid-column: 3/5;
     grid-row: 2;
+  }
+}
+
+// Games list
+
+#gamelist-title-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  margin: 10px 0px;
+
+  h1 {
+    grid-column: 2;
+    justify-self: center;
+    font-family: 'Roboto';
+  }
+
+  a {
+    grid-column: 3;
+    justify-self: end;
+    margin-right: 50px;
+
+    button {
+      background-color: $color-main;
+      border: 0;
+      border-radius: 20px;
+      color: $color-contrast;
+      font-family: 'Roboto';
+      font-weight: bold;
+      padding: 10px 20px;
+      transition: all 0.2s ease;
+      height: 40px;
+
+      &:hover {
+        box-sizing: border-box;
+        transform: scale(110%);
+        color: $color-main;
+        background-color: $color-contrast;
+        border: 2px solid $color-main;
+        padding: -10px -20px;
+      }
+
+      &:active {
+        background-color: $color-main;
+        color: white;
+      }
+    }
+  }
+}
+
+#gamelist-container {
+  display: grid;
+  row-gap: 50px;
+  justify-content: space-around;
+  grid-template-columns: repeat(auto-fit, 300px);
+
+  .gamelist-game {
+    overflow: hidden;
+    height: 200px;
+    box-sizing: border-box;
+    border: 2px solid $color-main;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+
+    a {
+      display: inline-block;
+      height: 100%;
+      text-decoration: none;
+      color: black;
+      padding: 15px;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 2px;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+    }
+
+    &:hover {
+      transform: scale(105%);
+      box-shadow: 5px 5px 10px;
+    }
   }
 }
