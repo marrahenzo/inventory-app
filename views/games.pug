@@ -1,23 +1,30 @@
 extends layout
 
 block content
-  h1 Games
-  for game in data
-    .game
-      p= game.title
-      p Platforms:
-      ul
-      for item in game.platform
-        li= item.name
-      ul
-      p Developer/s:
-      for item in game.developer
-        li= item.name
-      p Publisher:
-      p= game.publisher.name
-      p Genre/s:
-      for item in game.genre
-        li= item.name
-      p= game.summary
-      p= game.rating.name
-      a(href=`/game/${game._id}`) more
+  #gamelist-title-container
+    h1 Games
+    a(href="/game/create") #[button Add a Game]
+  #gamelist-container
+    for game in data
+      .gamelist-game
+        a(href=`/game/${game._id}`)
+          p= game.title
+          p 
+            for item in game.platform
+              if item === game.platform[0]
+                |#{item.name}
+              else 
+                |, #{item.name}
+          p By 
+            for item in game.developer
+              if item === game.developer[0]
+                |#{item.name}
+              else 
+                |, #{item.name}
+          p 
+            for item in game.genre
+              if item === game.genre[0]
+                |#{item.name}
+              else 
+                |  - #{item.name}
+          p= game.summary
