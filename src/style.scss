@@ -42,7 +42,7 @@ a:link {
       color: white;
     }
 
-    &:hover {
+    &:hover:not(:first-child) {
       transform: scale(110%);
     }
   }
