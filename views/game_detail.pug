@@ -1,22 +1,30 @@
 extends layout 
 
 block content
-  h1= game.title
-  p Platforms:
-  ul
-  for item in game.platform
-    li= item.name
-  ul
-  p Developer/s:
-  for item in game.developer
-    li= item.name
-  p Publisher:
-  p= game.publisher.name
-  p Genre/s:
-  for item in game.genre
-    li= item.name
-  p= game.summary
-  p= game.rating.name
-
-  a.btn.btn-primary(href=`${game.url}/update`) Edit
-  a.btn.btn-danger(href=`${game.url}/delete`) Delete
+  #game-helper-container
+    #game-container
+      h1= game.title
+      p= game.summary
+      p #[strong Platforms: ]
+        for item in game.platform
+          if item === game.platform[0]
+            |#{item.name}
+          else 
+            |, #{item.name}
+      p #[strong Developer/s: ]
+        for item in game.developer
+          if item === game.developer[0]
+            |#{item.name}
+          else 
+            |, #{item.name}
+      p #[strong Publisher: ]#{game.publisher.name}
+      p #[strong Genre/s: ]
+        for item in game.genre
+          if item === game.genre[0]
+            |#{item.name}
+          else 
+            |  - #{item.name}
+      p #[strong Age Rating: ]#{game.rating.name}
+      .button-container
+        a.button-edit(href=`${game.url}/update`) Edit
+        a.button-delete(href=`${game.url}/delete`) Delete
