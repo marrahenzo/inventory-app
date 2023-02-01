@@ -8,9 +8,8 @@ block content
     for gameCopy in data
       .gamelist-game 
         a(href=gameCopy.url)
+          img(src="/images/eldenring.png", alt="Game Box Art")
           p= gameCopy.game.title
-          for platform in gameCopy.game.platform
-            p= platform.name
           p= gameCopy.price 
           p= gameCopy.format
           p= gameCopy.condition

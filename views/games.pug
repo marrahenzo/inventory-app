@@ -8,6 +8,7 @@ block content
     for game in data
       .gamelist-game
         a(href=game.url)
+          img(src="/images/eldenring.png", alt="Game Box Art")
           p= game.title
           p 
             for item in game.platform
@@ -27,4 +28,3 @@ block content
                 |#{item.name}
               else 
                 |  - #{item.name}
-          p= game.summary

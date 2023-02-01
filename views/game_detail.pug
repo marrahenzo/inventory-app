@@ -4,6 +4,7 @@ block content
   #game-helper-container
     #game-container
       h1= game.title
+      img#game-cover(src="/images/eldenring.png", alt="Game Box Art")
       p= game.summary
       p #[strong Platforms: ]
         for item in game.platform
