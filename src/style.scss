@@ -5,6 +5,7 @@ $color-contrast: white;
 $color-edit: rgb(0, 163, 0);
 $color-delete: rgb(146, 0, 0);
 $color-background: rgb(228, 228, 228);
+$color-dark: rgb(184, 184, 184);
 
 * {
   margin: 0;
@@ -210,18 +211,31 @@ footer {
 
   .gamelist-game {
     overflow: hidden;
-    height: 200px;
+    height: 300px;
     box-sizing: border-box;
     border: 2px solid $color-main;
+    border-radius: 10px;
+    background-color: $color-dark;
     overflow: hidden;
     transition: all 0.2s ease-in-out;
+    font-family: 'Roboto';
 
     a {
       display: inline-block;
       height: 100%;
       text-decoration: none;
       color: black;
-      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      padding: 0px 10px;
+    }
+
+    img {
+      max-height: 60%;
+      border-radius: 5px;
     }
 
     p {
@@ -283,6 +297,8 @@ footer {
     transition: all 0.1s ease;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 96px;
   }
 
   .button-edit {
