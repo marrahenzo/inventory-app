@@ -4,6 +4,7 @@ $color-main: rgb(1, 7, 94);
 $color-contrast: white;
 $color-edit: rgb(0, 163, 0);
 $color-delete: rgb(146, 0, 0);
+$color-background: rgb(228, 228, 228);
 
 * {
   margin: 0;
@@ -20,6 +21,7 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  background-color: $color-background;
 }
 
 a:link {
@@ -255,6 +257,10 @@ footer {
   flex-direction: column;
   max-width: 80vh;
   gap: 10px;
+}
+
+#game-cover {
+  max-height: 300px;
 }
 
 .button-container {
