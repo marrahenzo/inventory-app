@@ -2,6 +2,8 @@
 
 $color-main: rgb(1, 7, 94);
 $color-contrast: white;
+$color-edit: rgb(0, 163, 0);
+$color-delete: rgb(146, 0, 0);
 
 * {
   margin: 0;
@@ -232,6 +234,67 @@ footer {
     &:hover {
       transform: scale(105%);
       box-shadow: 5px 5px 10px;
+    }
+  }
+}
+
+// Game detail
+
+#game-helper-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto auto;
+}
+
+#game-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 80vh;
+  gap: 10px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+
+  a {
+    color: white;
+    font-family: 'Open Sans';
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 42px;
+    border: 2px solid $color-contrast;
+    transition: all 0.1s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .button-edit {
+    background-color: $color-edit;
+
+    &:hover {
+      color: $color-edit;
+      background-color: $color-contrast;
+      border: 2px solid $color-edit;
+    }
+  }
+
+  .button-delete {
+    background-color: $color-delete;
+
+    &:hover {
+      color: $color-delete;
+      background-color: $color-contrast;
+      border: 2px solid $color-delete;
     }
   }
 }
