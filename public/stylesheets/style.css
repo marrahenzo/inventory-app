@@ -172,6 +172,7 @@ footer #credits-link:hover {
   row-gap: 50px;
   justify-content: space-around;
   grid-template-columns: repeat(auto-fit, 300px);
+  margin-bottom: 20px;
 }
 #gamelist-container .gamelist-game {
   overflow: hidden;
