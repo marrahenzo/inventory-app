@@ -1,9 +1,12 @@
 extends layout 
 
 block content 
-  h1 Publishers 
-  for publisher in data 
-    .publisher 
-      p=publisher.name 
-      p=publisher.description
-      a(href=`/publisher/${publisher.id}`) more
+  #gamelist-title-container
+    h1 Publishers 
+    a(href="/publisher/create") #[button Add a Publisher]
+  #gamelist-container
+    for publisher in data 
+      .gamelist-game
+        a(href=publisher.url)
+          p=publisher.name 
+          p=publisher.description

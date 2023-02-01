@@ -1,9 +1,12 @@
 extends layout 
 
 block content 
-  h1 Age Ratings 
-  for agerating in data 
-    .agerating 
-      p=agerating.name 
-      p=agerating.description
-      a(href=`/rating/${agerating.id}`) more
+  #gamelist-title-container
+    h1 Age Ratings 
+    a(href="/rating/create") #[button Add an Age Rating]
+  #gamelist-container
+    for agerating in data 
+      .gamelist-game
+        a(href=agerating.url)
+          p=agerating.name 
+          p=agerating.description

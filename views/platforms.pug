@@ -1,9 +1,12 @@
 extends layout 
 
 block content 
-  h1 Platforms 
-  for platform in data 
-    .genre 
-      p=platform.name 
-      p=platform.description
-      a(href=`/platform/${platform.id}`) more
+  #gamelist-title-container
+    h1 Platforms
+    a(href="/platform/create") #[button Add a Platform]
+  #gamelist-container
+    for platform in data 
+      .gamelist-game
+        a(href=platform.url)
+          p=platform.name 
+          p=platform.description

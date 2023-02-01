@@ -1,9 +1,12 @@
 extends layout 
 
 block content 
-  h1 Developers 
-  for developer in data 
-    .developer 
-      p=developer.name 
-      p=developer.description
-      a(href=`/developer/${developer.id}`) more
+  #gamelist-title-container
+    h1 Developers 
+    a(href="/developer/create") #[button Add a Developer]
+  #gamelist-container
+    for developer in data 
+      .gamelist-game
+        a(href=developer.url)
+          p=developer.name 
+          p=developer.description

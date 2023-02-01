@@ -1,9 +1,12 @@
 extends layout 
 
 block content 
-  h1 Genres 
-  for genre in data 
-    .genre 
-      p=genre.name 
-      p=genre.description
-      a(href=`/genre/${genre.id}`) more
+  #gamelist-title-container
+    h1 Genres 
+    a(href="/genre/create") #[button Add a Genre]
+  #gamelist-container
+    for genre in data 
+      .gamelist-game
+        a(href=genre.url)
+          p=genre.name 
+          p=genre.description

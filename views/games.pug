@@ -7,7 +7,7 @@ block content
   #gamelist-container
     for game in data
       .gamelist-game
-        a(href=`/game/${game._id}`)
+        a(href=game.url)
           p= game.title
           p 
             for item in game.platform
