@@ -1,8 +1,12 @@
 extends layout
 
 block content 
-  h1=developer.name 
-  p=developer.description
+  #game-helper-container
+    #game-container
+      h1= developer.name 
+      img#game-cover(src="/images/fromsoft.svg", alt="Developer logo")
+      p= developer.description
 
-  a.btn.btn-primary(href=`${developer.url}/update`) Edit
-  a.btn.btn-danger(href=`${developer.url}/delete`) Delete
+      .button-container
+          a.button-edit(href=`${developer.url}/update`) Edit
+          a.button-delete(href=`${developer.url}/delete`) Delete

@@ -1,11 +1,12 @@
 // Main layout, navbar and footer
 
-$color-main: rgb(1, 7, 94);
+$color-main: rgb(0, 2, 37);
+$color-accent: rgb(0, 8, 116);
 $color-contrast: white;
 $color-edit: rgb(0, 163, 0);
 $color-delete: rgb(146, 0, 0);
-$color-background: rgb(228, 228, 228);
-$color-dark: rgb(184, 184, 184);
+$color-card: rgb(255, 255, 255);
+$color-card-border: black;
 
 * {
   margin: 0;
@@ -22,7 +23,7 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  background-color: $color-background;
+  background-color: $color-main;
 }
 
 a:link {
@@ -63,7 +64,7 @@ a:link {
 }
 
 footer {
-  background-color: $color-main;
+  background-color: $color-contrast;
   margin-top: auto;
   display: flex;
   align-items: center;
@@ -74,11 +75,13 @@ footer {
 
   #credits-name {
     font-family: 'Roboto';
-    color: $color-contrast;
+    font-weight: bold;
+    color: $color-main;
   }
 
   #credits-link {
     transition: transform 0.3s ease-in-out;
+    filter: invert(100%);
 
     &:hover {
       transform: rotate(360deg) scale(110%);
@@ -97,6 +100,7 @@ footer {
   font-family: 'Source Sans Pro';
   text-align: center;
   margin: 20px 0px;
+  color: $color-contrast;
 }
 
 .counter-container {
@@ -167,6 +171,7 @@ footer {
     grid-column: 2;
     justify-self: center;
     font-family: 'Roboto';
+    color: $color-contrast;
   }
 
   a {
@@ -175,10 +180,12 @@ footer {
     margin-right: 50px;
 
     button {
-      background-color: $color-main;
+      background-color: $color-contrast;
       border: 0;
       border-radius: 20px;
       color: $color-contrast;
+      background-color: $color-main;
+      border: 2px solid $color-contrast;
       font-family: 'Roboto';
       font-weight: bold;
       padding: 10px 20px;
@@ -213,9 +220,8 @@ footer {
     overflow: hidden;
     height: 300px;
     box-sizing: border-box;
-    border: 2px solid $color-main;
-    border-radius: 10px;
-    background-color: $color-dark;
+    border: 5px solid $color-card-border;
+    background-color: $color-card;
     overflow: hidden;
     transition: all 0.2s ease-in-out;
     font-family: 'Roboto';
@@ -249,7 +255,7 @@ footer {
 
     &:hover {
       transform: scale(105%);
-      box-shadow: 5px 5px 10px;
+      box-shadow: 0px 0px 5px $color-contrast;
     }
   }
 }
@@ -272,6 +278,8 @@ footer {
   max-width: 80vh;
   gap: 10px;
   text-align: center;
+  color: $color-contrast;
+  font-family: 'Poppins';
 }
 
 #game-cover {

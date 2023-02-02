@@ -1,8 +1,11 @@
 extends layout 
 
 block content 
-  h1=genre.name 
-  p=genre.description
+  #game-helper-container
+    #game-container
+      h1= genre.name 
+      p= genre.description
 
-  a.btn.btn-primary(href=`${genre.url}/update`) Edit
-  a.btn.btn-danger(href=`${genre.url}/delete`) Delete
+      .button-container
+          a.button-edit(href=`${genre.url}/update`) Edit
+          a.button-delete(href=`${genre.url}/delete`) Delete

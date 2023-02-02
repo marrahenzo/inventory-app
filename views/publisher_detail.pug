@@ -1,8 +1,12 @@
 extends layout 
 
 block content 
-  h1=publisher.name 
-  p=publisher.description
+  #game-helper-container
+    #game-container
+      h1= publisher.name 
+      img#game-cover(src="/images/bamco.svg", alt="Publisher logo")
+      p= publisher.description
 
-  a.btn.btn-primary(href=`${publisher.url}/update`) Edit
-  a.btn.btn-danger(href=`${publisher.url}/delete`) Delete
+      .button-container
+          a.button-edit(href=`${publisher.url}/update`) Edit
+          a.button-delete(href=`${publisher.url}/delete`) Delete

@@ -1,8 +1,12 @@
 extends layout 
 
 block content
-  h1= platform.name 
-  p= platform.description
+  #game-helper-container
+    #game-container
+      h1= platform.name 
+      img#game-cover(src="/images/ps5.png", alt="Console")
+      p= platform.description
 
-  a.btn.btn-primary(href=`${platform.url}/update`) Edit
-  a.btn.btn-danger(href=`${platform.url}/delete`) Delete
+      .button-container
+          a.button-edit(href=`${platform.url}/update`) Edit
+          a.button-delete(href=`${platform.url}/delete`) Delete

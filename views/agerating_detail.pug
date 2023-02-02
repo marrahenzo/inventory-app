@@ -1,8 +1,12 @@
 extends layout 
 
 block content 
-  h1=agerating.name 
-  p=agerating.description
+  #game-helper-container
+    #game-container
+      h1= agerating.name 
+      img#game-cover(src="/images/esrb.svg", alt="Age Rating logo")
+      p= agerating.description
 
-  a.btn.btn-primary(href=`${agerating.url}/update`) Edit
-  a.btn.btn-danger(href=`${agerating.url}/delete`) Delete
+      .button-container
+          a.button-edit(href=`${agerating.url}/update`) Edit
+          a.button-delete(href=`${agerating.url}/delete`) Delete
