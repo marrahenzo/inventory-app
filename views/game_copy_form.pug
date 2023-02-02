@@ -1,30 +1,34 @@
 extends layout 
 
 block content 
-  h1=title
+  .form-margin
+    .form-container
+      h1=title
 
-  form(action="" method='POST')
-    .form-group
-      label(for="game") Game: 
-      select#game.form-control(name='game')
-        for game in data.games 
-          option(value=`${game.id}`) #{game.title}
-      label(for="price") Price: 
-      input#price.form-control(type='number' placeholder='59.99' name='price' required='true' step="0.01" value=(data.gamecopy === undefined ? '' : data.gamecopy.price))
-      fieldset 
-        legend Format
-        label(for="format-physical") Physical:
-        input#format-physical(type='radio' name='format' value='Physical' checked=(data.gamecopy.format === 'Physical'))
-        label(for="format-digital") Digital:
-        input#format-digital(type='radio' name='format' value='Digital' checked=(data.gamecopy.format === 'Digital'))
-      fieldset 
-        legend Condition
-        label(for="format-new") New:
-        input#format-new(type='radio' name='condition' value='New' checked=(data.gamecopy.condition === 'New'))
-        label(for="format-used") Used:
-        input#format-used(type='radio' name='condition' value='Used' checked=(data.gamecopy.condition === 'Used'))
-    button.btn.btn-primary(type='submit') Submit
-  if errors
-    ul
-      for error in errors
-        li!= error.msg
+      form.form(action="" method='POST')
+        .form-title
+          label(for="game") Game: 
+          select#game(name='game')
+            for game in data.games 
+              option(value=`${game.id}`) #{game.title}
+          label(for="price") Price: 
+          input#price(type='number' placeholder='59.99' name='price' required='true' step="0.01" value=(data.gamecopy === undefined ? '' : data.gamecopy.price))
+          .form-checkbox
+            p Format
+            .form-checkbox-inputs
+              label(for="format-physical") Physical:
+              input#format-physical(type='radio' name='format' value='Physical' checked=(data.gamecopy === undefined ? false : data.gamecopy.format === 'Physical'))
+              label(for="format-digital") Digital:
+              input#format-digital(type='radio' name='format' value='Digital' checked=(data.gamecopy === undefined ? false : data.gamecopy.format === 'Digital'))
+          .form-checkbox
+            p Condition
+            .form-checkbox-inputs
+              label(for="format-new") New:
+              input#format-new(type='radio' name='condition' value='New' checked=(data.gamecopy === undefined ? false : data.gamecopy.condition === 'New'))
+              label(for="format-used") Used:
+              input#format-used(type='radio' name='condition' value='Used' checked=(data.gamecopy === undefined ? false : data.gamecopy.condition === 'Used'))
+        button.button-form-submit(type='submit') Submit
+      if errors
+        ul
+          for error in errors
+            li!= error.msg

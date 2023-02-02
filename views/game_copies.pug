@@ -3,7 +3,7 @@ extends layout
 block content
   #gamelist-title-container
     h1 Game Copies
-    a(href="/game/create") #[button Add a Copy]
+    a(href="/gamecopy/create") #[button Add a Copy]
   #gamelist-container
     for gameCopy in data
       .gamelist-game 
