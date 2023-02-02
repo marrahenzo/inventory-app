@@ -72,7 +72,10 @@ exports.publisher_delete_get = (req, res) => {
         Publisher.findById(req.params.id).exec(callback);
       },
       games(callback) {
-        Game.find({ publisher: req.params.id }).exec(callback);
+        Game.find({ publisher: req.params.id })
+          .populate('developer')
+          .populate('publisher')
+          .exec(callback);
       }
     },
     (err, results) => {

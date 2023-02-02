@@ -70,7 +70,10 @@ exports.genre_delete_get = (req, res) => {
         Genre.findById(req.params.id).exec(callback);
       },
       games(callback) {
-        Game.find({ genre: req.params.id }).exec(callback);
+        Game.find({ genre: req.params.id })
+          .populate('developer')
+          .populate('publisher')
+          .exec(callback);
       }
     },
     (err, results) => {

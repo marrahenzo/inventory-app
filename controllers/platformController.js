@@ -70,7 +70,10 @@ exports.platform_delete_get = (req, res) => {
         Platform.findById(req.params.id).exec(callback);
       },
       games(callback) {
-        Game.find({ platform: req.params.id }).exec(callback);
+        Game.find({ platform: req.params.id })
+          .populate('developer')
+          .populate('publisher')
+          .exec(callback);
       }
     },
     (err, results) => {

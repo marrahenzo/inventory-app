@@ -70,7 +70,10 @@ exports.age_rating_delete_get = (req, res, next) => {
         AgeRating.findById(req.params.id).exec(callback);
       },
       games(callback) {
-        Game.find({ rating: req.params.id }).exec(callback);
+        Game.find({ rating: req.params.id })
+          .populate('developer')
+          .populate('publisher')
+          .exec(callback);
       }
     },
     (err, results) => {
