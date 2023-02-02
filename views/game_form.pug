@@ -5,7 +5,7 @@ block content
     .form-container
       h1=title 
       
-      form.form(action="" method="post")
+      form.form(action="" method="post" enctype="multipart/form-data")
         .form-title
           label(for='title') Title: 
           input#title(type='text' placeholder='Elden Ring' name='title' required='true' value=(data.game===undefined?'':data.game.title))  
@@ -43,4 +43,6 @@ block content
           select(name="rating" required='true')
             for rating in data.ratings
               option(value=rating.id selected=((data.game === undefined) ? false : data.game.rating.id === rating.id)) #{rating.name}
+        label(for="image") Image: 
+        input#image(type="file" accept='image/*' name='image' required='true') 
         button.button-form-submit(type="submit") Submit

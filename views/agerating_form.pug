@@ -5,12 +5,14 @@ block content
     .form-container
       h1=title
 
-      form.form(action="" method='POST')
+      form.form(action="" method='POST' enctype="multipart/form-data")
         .form-title
           label(for="name") Name: 
           input#name(type='text' placeholder='Name' name='name' required='true' value=(agerating === undefined ? '' : agerating.name)) 
           label(for="description") Description: 
           textarea#description(placeholder='Description...' name='description' required='true' cols="30", rows="10") #{agerating === undefined ? '' : agerating.description}
+          label(for="image") Image: 
+          input#image(type="file" accept='image/*' name='image' required='true') 
         button.button-form-submit(type='submit') Submit
       if errors
         ul
