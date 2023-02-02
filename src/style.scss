@@ -333,81 +333,88 @@ footer {
 
 // Game form
 
-.form-container {
-  color: white;
-  margin: 20px 0;
-
-  h1 {
-    text-align: center;
-  }
-
-  .form {
+.form-margin {
+  margin: auto 0;
+  .form-container {
+    color: white;
+    margin: 20px 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    font-family: 'Poppins';
-    gap: 10px;
-  }
-
-  h1 {
-    font-family: 'Roboto';
-    color: $color-contrast;
-  }
-
-  .form-title {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .form-checkbox {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
 
-    .form-checkbox-inputs {
+    h1 {
+      text-align: center;
+    }
+
+    .form {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins';
       gap: 10px;
     }
-  }
 
-  .form-select {
-    select {
-      color: white;
-      background-color: $color-main;
-      border: 2px solid $color-contrast;
-      border-radius: 20px;
-      padding-left: 10px;
-      font-family: 'Poppins';
+    h1 {
+      font-family: 'Roboto';
+      color: $color-contrast;
+    }
 
-      option {
-        font-family: 'Poppins';
+    .form-title {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .form-checkbox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .form-checkbox-inputs {
+        display: flex;
+        gap: 10px;
       }
     }
-  }
 
-  .form-summary {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+    .form-select {
+      select {
+        color: white;
+        background-color: $color-main;
+        border: 2px solid $color-contrast;
+        border-radius: 20px;
+        padding-left: 10px;
+        font-family: 'Poppins';
 
-  .button-form-submit {
-    padding: 10px 20px;
-    font-family: 'Open Sans';
-    font-weight: bold;
-    color: $color-contrast;
-    background-color: $color-accent;
-    border: 2px solid $color-contrast;
-    border-radius: 20px;
-    transition: all 0.1s ease;
+        option {
+          font-family: 'Poppins';
+        }
+      }
+    }
 
-    &:hover {
-      color: $color-accent;
-      background-color: $color-contrast;
-      border: 2px solid $color-accent;
+    .form-summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .button-form-submit {
+      padding: 10px 20px;
+      font-family: 'Open Sans';
+      font-weight: bold;
+      color: $color-contrast;
+      background-color: $color-accent;
+      border: 2px solid $color-contrast;
+      border-radius: 20px;
+      transition: all 0.1s ease;
+
+      &:hover {
+        color: $color-accent;
+        background-color: $color-contrast;
+        border: 2px solid $color-accent;
+      }
     }
   }
 }
