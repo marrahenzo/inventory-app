@@ -5,16 +5,30 @@ block content
     p#index-title Welcome to #{title}, gaming database and mini-store
     .counter-container
       .index-counter#game
-        p Game count: #{data.game_count} #[a(href="/game") all games]
+        a(href="/game")
+          p.count= data.game_count
+          p.category Games
       .index-counter#copy
-        p Game Copy count: #{data.game_copy_count} #[a(href="/gamecopy") all game copies]
+        a(href="/game")
+          p.count= data.game_copy_count
+          p.category Game Copies
       .index-counter#genre
-        p Genre count: #{data.genre_count} #[a(href="/genre") all genres]
+        a(href="/game")
+          p.count= data.game_count
+          p.category Genres
       .index-counter#platform
-        p Platform count: #{data.platform_count} #[a(href="/platform") all platforms]
+        a(href="/game")
+          p.count= data.platform_count
+          p.category Platforms
       .index-counter#developer
-        p Developer count: #{data.developer_count} #[a(href="/developer") all developers]
+        a(href="/game")
+          p.count= data.developer_count
+          p.category Developers
       .index-counter#publisher
-        p Publisher count: #{data.publisher_count} #[a(href="/publisher") all publishers]
+        a(href="/game")
+          p.count= data.publisher_count
+          p.category Publishers
       .index-counter#rating
-        p Age Rating count: #{data.age_rating_count} #[a(href="/rating") all age ratings]
+        a(href="/game")
+          p.count= data.age_rating_count
+          p.category Age Ratings
