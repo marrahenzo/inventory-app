@@ -418,3 +418,78 @@ footer {
     }
   }
 }
+
+// Delete game
+
+.delete-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  text-align: center;
+
+  .delete-form {
+    gap: 10px;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    color: $color-contrast;
+    font-family: 'Poppins';
+
+    a {
+      color: $color-contrast;
+    }
+
+    .delete-elements {
+      display: grid;
+      align-items: center;
+      justify-content: center;
+      row-gap: 20px;
+      column-gap: 5px;
+      grid-template-columns: repeat(auto-fit, 150px);
+
+      .delete-element {
+        border: 1px solid $color-contrast;
+        border-radius: 10px;
+        background-color: $color-accent;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: scale(110%);
+        }
+      }
+    }
+
+    .delete-confirm-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      .button-delete-confirm {
+        color: white;
+        font-family: 'Open Sans';
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 20px;
+        box-sizing: border-box;
+        height: 42px;
+        border: 2px solid $color-contrast;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 96px;
+        background-color: $color-delete;
+
+        &:hover {
+          color: $color-delete;
+          background-color: $color-contrast;
+          border: 2px solid $color-delete;
+        }
+      }
+    }
+  }
+}
