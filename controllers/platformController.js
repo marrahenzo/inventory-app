@@ -31,7 +31,8 @@ exports.platform_create_post = [
 
     const platform = new Platform({
       name: req.body.name,
-      description: req.body.description
+      description: req.body.description,
+      image: req.file.filename
     });
 
     if (!errors.isEmpty()) {
@@ -149,6 +150,7 @@ exports.platform_update_post = [
     const platform = new Platform({
       name: req.body.name,
       description: req.body.description,
+      image: req.file.filename,
       _id: req.params.id
     });
 

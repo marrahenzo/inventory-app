@@ -31,7 +31,8 @@ exports.publisher_create_post = [
 
     const publisher = new Publisher({
       name: req.body.name,
-      description: req.body.description
+      description: req.body.description,
+      image: req.file.filename
     });
 
     if (!errors.isEmpty()) {
@@ -151,6 +152,7 @@ exports.publisher_update_post = [
     const publisher = new Publisher({
       name: req.body.name,
       description: req.body.description,
+      image: req.file.filename,
       _id: req.params.id
     });
 

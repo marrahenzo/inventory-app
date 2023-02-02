@@ -75,7 +75,6 @@ exports.game_create_post = [
 
     Genre.find({ _id: { $in: req.body.genre } }).exec((err, results) => {
       if (err) res.redirect('/game/create');
-      console.log(results);
 
       const game = new Game({
         title: req.body.title,
@@ -84,7 +83,8 @@ exports.game_create_post = [
         publisher: req.body.publisher,
         genre: results.map((a) => a.id),
         summary: req.body.summary,
-        rating: req.body.rating
+        rating: req.body.rating,
+        image: req.file.filename
       });
 
       if (!errors.isEmpty()) {
@@ -198,7 +198,8 @@ exports.game_update_post = [
       publisher: req.body.publisher,
       genre: req.body.genre,
       summary: req.body.summary,
-      rating: req.body.rating
+      rating: req.body.rating,
+      image: req.file.filename
     });
 
     if (!errors.isEmpty()) {

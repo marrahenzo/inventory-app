@@ -31,7 +31,8 @@ exports.developer_create_post = [
 
     const developer = new Developer({
       name: req.body.name,
-      description: req.body.description
+      description: req.body.description,
+      image: req.file.filename
     });
 
     if (!errors.isEmpty()) {
@@ -147,6 +148,7 @@ exports.developer_update_post = [
     const developer = new Developer({
       name: req.body.name,
       description: req.body.description,
+      image: req.file.filename,
       _id: req.params.id
     });
 

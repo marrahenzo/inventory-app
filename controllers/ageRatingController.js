@@ -31,7 +31,8 @@ exports.age_rating_create_post = [
 
     const rating = new AgeRating({
       name: req.body.name,
-      description: req.body.description
+      description: req.body.description,
+      image: req.file.filename
     });
 
     if (!errors.isEmpty()) {
@@ -149,6 +150,7 @@ exports.age_rating_update_post = [
     const rating = new AgeRating({
       name: req.body.name,
       description: req.body.description,
+      image: req.file.filename,
       _id: req.params.id
     });
 
