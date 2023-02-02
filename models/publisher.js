@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const PublisherSchema = new Schema({
   name: { type: String, required: true, maxLength: 30 },
-  description: { type: String, required: true, maxLength: 10000 }
+  description: { type: String, required: true, maxLength: 10000 },
+  image: { type: String, required: true }
 });
 
 PublisherSchema.virtual('url').get(function () {
