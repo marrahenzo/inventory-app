@@ -8,5 +8,5 @@ block content
     for developer in data 
       .gamelist-game
         a(href=developer.url)
-          img(src="/images/fromsoft.svg", alt="Developer logo")
+          img(src=`/images/uploads/${developer.image}`, alt="Developer logo")
           p=developer.name 

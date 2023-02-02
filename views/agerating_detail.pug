@@ -4,7 +4,7 @@ block content
   #game-helper-container
     #game-container
       h1= agerating.name 
-      img#game-cover(src="/images/esrb.svg", alt="Age Rating logo")
+      img#game-cover(src=`/images/uploads/${agerating.image}`, alt="Age Rating logo")
       p= agerating.description
 
       .button-container

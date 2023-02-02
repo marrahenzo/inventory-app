@@ -4,7 +4,7 @@ block content
   #game-helper-container
     #game-container
       h1= platform.name 
-      img#game-cover(src="/images/ps5.png", alt="Console")
+      img#game-cover(src=`/images/uploads/${platform.image}`, alt="Console")
       p= platform.description
 
       .button-container

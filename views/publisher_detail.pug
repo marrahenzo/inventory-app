@@ -4,7 +4,7 @@ block content
   #game-helper-container
     #game-container
       h1= publisher.name 
-      img#game-cover(src="/images/bamco.svg", alt="Publisher logo")
+      img#game-cover(src=`/images/uploads/${publisher.image}`, alt="Publisher logo")
       p= publisher.description
 
       .button-container

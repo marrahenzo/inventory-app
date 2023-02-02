@@ -4,7 +4,7 @@ block content
   #game-helper-container
     #game-container
       h1= data.game.title
-      img#game-cover(src="/images/eldenring.png", alt="Game Box Art")
+      img#game-cover(src=`/images/uploads/${data.game.image}`, alt="Game Box Art")
       p #[strong Price: ] #{data.price}
       p #[strong Format: ] #{data.format}
       p #[strong Condition: ] #{data.condition}

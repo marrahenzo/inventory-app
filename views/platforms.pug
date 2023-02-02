@@ -8,5 +8,5 @@ block content
     for platform in data 
       .gamelist-game
         a(href=platform.url)
-          img(src="/images/ps5.png", alt="Game Console")
+          img(src=`/images/uploads/${platform.image}`, alt="Game Console")
           p=platform.name 
