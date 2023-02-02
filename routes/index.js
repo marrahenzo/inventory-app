@@ -14,6 +14,7 @@ const AgeRating = require('../models/ageRating');
 router.get('/', function (req, res) {
   async.parallel(
     {
+      /* UNUSED CODE
       random_game(callback) {
         Game.countDocuments({}, (err, count) => {
           let randomNumber = getRandom(count);
@@ -55,7 +56,7 @@ router.get('/', function (req, res) {
           let randomNumber = getRandom(count);
           AgeRating.findOne(callback).skip(randomNumber);
         });
-      },
+      },*/
       game_count(callback) {
         Game.countDocuments({}, callback);
       },
