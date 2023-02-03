@@ -106,11 +106,15 @@ exports.platform_delete_post = (req, res) => {
     (err, results) => {
       if (err) return next(err);
 
-      if (results.games.length > 0) {
+      if (
+        results.games.length > 0 ||
+        req.body.password !== process.env.SECRET
+      ) {
         res.render('platform_delete', {
           title: 'Delete Platform',
           platform: results.platform,
-          games: results.games
+          games: results.games,
+          error: true
         });
         return;
       }
@@ -154,11 +158,11 @@ exports.platform_update_post = [
       _id: req.params.id
     });
 
-    if (!errors.isEmpty()) {
+    if (!errors.isEmpty() || req.body.password !== process.env.SECRET) {
       res.render('platform_form', {
         title: 'Edit Platform',
         platform,
-        errors: errors.array()
+        error: true
       });
       return;
     } else {

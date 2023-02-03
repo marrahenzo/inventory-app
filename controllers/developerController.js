@@ -104,11 +104,15 @@ exports.developer_delete_post = (req, res) => {
     (err, results) => {
       if (err) return next(err);
 
-      if (results.games.length > 0) {
+      if (
+        results.games.length > 0 ||
+        req.body.password !== process.env.SECRET
+      ) {
         res.render('developer_delete', {
           title: 'Delete Developer',
           developer: results.developer,
-          games: results.games
+          games: results.games,
+          error: true
         });
         return;
       }
@@ -152,11 +156,11 @@ exports.developer_update_post = [
       _id: req.params.id
     });
 
-    if (!errors.isEmpty()) {
+    if (!errors.isEmpty() || req.body.password !== process.env.SECRET) {
       res.render('developer_form', {
         title: 'Edit Developer',
         developer,
-        errors: errors.array()
+        error: true
       });
       return;
     } else {

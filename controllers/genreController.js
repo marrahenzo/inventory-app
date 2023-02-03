@@ -105,11 +105,15 @@ exports.genre_delete_post = (req, res) => {
     (err, results) => {
       if (err) return next(err);
 
-      if (results.games.length > 0) {
+      if (
+        results.games.length > 0 ||
+        req.body.password !== process.env.SECRET
+      ) {
         res.render('genre_delete', {
           title: 'Delete Genre',
           genre: results.genre,
-          games: results.games
+          games: results.games,
+          error: true
         });
         return;
       }
@@ -152,11 +156,11 @@ exports.genre_update_post = [
       _id: req.params.id
     });
 
-    if (!errors.isEmpty()) {
+    if (!errors.isEmpty() || req.body.password !== process.env.SECRET) {
       res.render('genre_form', {
         title: 'Edit Genre',
         genre,
-        errors: errors.array()
+        error: true
       });
       return;
     } else {

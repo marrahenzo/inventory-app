@@ -86,6 +86,18 @@ exports.game_copy_delete_get = (req, res) => {
 };
 
 exports.game_copy_delete_post = (req, res, next) => {
+  if (req.body.password !== process.env.SECRET) {
+    GameCopy.findById(req.params.id)
+      .populate('game')
+      .exec((err, results) => {
+        res.render('game_copy_delete', {
+          title: 'Delete Game Copy',
+          copy: results,
+          error: true
+        });
+      });
+    return;
+  }
   GameCopy.findByIdAndRemove(req.body.copyid, (err) => {
     if (err) return next(err);
 
@@ -135,13 +147,13 @@ exports.game_copy_update_post = [
       _id: req.params.id
     });
 
-    if (!errors.isEmpty()) {
+    if (!errors.isEmpty() || req.body.password !== process.env.SECRET) {
       Game.find({}).exec((err, results) => {
         if (err) res.redirect(copy.url);
         res.render('game_copy_form', {
           title: 'Edit Game copy',
           data: { gamecopy: copy, games: results },
-          errors: errors.array()
+          error: true
         });
       });
       return;

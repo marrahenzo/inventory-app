@@ -106,11 +106,15 @@ exports.age_rating_delete_post = (req, res, next) => {
     (err, results) => {
       if (err) return next(err);
 
-      if (results.games.length > 0) {
+      if (
+        results.games.length > 0 ||
+        req.body.password !== process.env.SECRET
+      ) {
         res.render('agerating_delete', {
           title: 'Delete Age rating',
           agerating: results.rating,
-          games: results.games
+          games: results.games,
+          error: true
         });
         return;
       }
@@ -154,11 +158,11 @@ exports.age_rating_update_post = [
       _id: req.params.id
     });
 
-    if (!errors.isEmpty()) {
+    if (!errors.isEmpty() || req.body.password !== process.env.SECRET) {
       res.render('agerating_form', {
         title: 'Edit Age Rating',
         agerating: rating,
-        errors: errors.array()
+        error: true
       });
       return;
     } else {

@@ -108,11 +108,15 @@ exports.publisher_delete_post = (req, res) => {
     (err, results) => {
       if (err) return next(err);
 
-      if (results.games.length > 0) {
+      if (
+        results.games.length > 0 ||
+        req.body.password !== process.env.SECRET
+      ) {
         res.render('publisher_delete', {
           title: 'Delete Publisher',
           publisher: results.publisher,
-          games: results.games
+          games: results.games,
+          error: true
         });
         return;
       }
@@ -156,11 +160,11 @@ exports.publisher_update_post = [
       _id: req.params.id
     });
 
-    if (!errors.isEmpty()) {
+    if (!errors.isEmpty() || req.body.password !== process.env.SECRET) {
       res.render('publisher_form', {
         title: 'Edit Publisher',
         publisher,
-        errors: errors.array()
+        error: true
       });
       return;
     } else {
