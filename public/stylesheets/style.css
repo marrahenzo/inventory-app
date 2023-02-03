@@ -445,5 +445,12 @@ footer #credits-link:hover {
   background-color: white;
   border: 2px solid rgb(146, 0, 0);
 }
+.delete-container .delete-form .delete-confirm-form .delete-password-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 
 /*# sourceMappingURL=style.css.map */

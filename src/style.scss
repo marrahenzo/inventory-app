@@ -517,6 +517,14 @@ footer {
           border: 2px solid $color-delete;
         }
       }
+
+      .delete-password-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
     }
   }
 }
