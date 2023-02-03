@@ -45,4 +45,9 @@ block content
               option(value=rating.id selected=((data.game === undefined) ? false : data.game.rating.id === rating.id)) #{rating.name}
         label(for="image") Image: 
         input#image(type="file" accept='image/*' name='image' required='true') 
+        if title.includes('Edit')
+          label(for="password") Password: 
+          input#password(type='password' placeholder='???' name='password' required='true') 
         button.button-form-submit(type="submit") Submit
+        if error
+          p Incorrect password!

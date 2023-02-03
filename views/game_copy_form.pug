@@ -27,8 +27,9 @@ block content
               input#format-new(type='radio' name='condition' value='New' checked=(data.gamecopy === undefined ? false : data.gamecopy.condition === 'New'))
               label(for="format-used") Used:
               input#format-used(type='radio' name='condition' value='Used' checked=(data.gamecopy === undefined ? false : data.gamecopy.condition === 'Used'))
+          if title.includes('Edit')
+            label(for="password") Password: 
+            input#password(type='password' placeholder='???' name='password' required='true') 
         button.button-form-submit(type='submit') Submit
-      if errors
-        ul
-          for error in errors
-            li!= error.msg
+        if error
+          p Incorrect password!

@@ -10,6 +10,11 @@ block content
       p= copy.format 
       p= copy.condition
       .delete-confirm-form
-        form(action="" method='POST')
+        form.delete-password-button(action="" method='POST')
           input#copyid(type='hidden' name='copyid' required='true' value=copy.id)
+          .delete-password
+              label(for="password") Password: 
+              input#password(type='password' placeholder='???' name='password' required='true') 
           button.button-delete-confirm(type='submit') Delete
+      if error
+        p Incorrect password!

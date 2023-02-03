@@ -17,6 +17,11 @@ block content
       else
         .delete-confirm-form
           p Do you really want to delete this Platform?
-          form(action="" method='POST')
+          form.delete-password-button(action="" method='POST')
             input#platformid(type='hidden' name='platformid' required='true' value=platform.id)
+            .delete-password
+              label(for="password") Password: 
+              input#password(type='password' placeholder='???' name='password' required='true') 
             button.button-delete-confirm(type='submit') Delete
+      if error
+        p Incorrect password!
